@@ -1,6 +1,15 @@
+use structopt::StructOpt;
+
+#[derive(StructOpt)]
+struct Options {
+    #[structopt(default_value = "Meow!")]
+    /// What  does the cat say?
+    message: String
+}
+
 fn main() {
-    let message = std::env::args().nth(1)
-        .expect("Missing the message, Usage: catsay <message>");
+    let options = Options::from_args();
+    let message = options.message;
 
     println!("{}", message);
     println!("  \\");
