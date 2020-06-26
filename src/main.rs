@@ -1,4 +1,6 @@
+extern crate colored;
 use structopt::StructOpt;
+use colored::*;
 
 #[derive(StructOpt)]
 struct Options {
@@ -17,10 +19,10 @@ fn main() {
 
     let eye = if options.dead { "x" } else { "o" };
 
-    println!("{}", message);
+    println!("{}", message.bright_yellow().underline().on_purple());
     println!("  \\");
     println!("   \\");
     println!("     /\\_/\\");
-    println!("    ( {eye} {eye} )", eye=eye);
+    println!("    ( {eye} {eye} )", eye=eye.red().bold());
     println!("    =( I )=");
 }
